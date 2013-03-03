@@ -1,0 +1,29 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+Graph	Graph.cpp	/^Graph::Graph(Graph const &g) $/;"	f	class:Graph
+Graph	Graph.cpp	/^Graph::Graph(int n_node) $/;"	f	class:Graph
+addEdge	Graph.cpp	/^Edge Graph::addEdge(string const &idSource, string const &idTarget, float eData) $/;"	f	class:Graph
+addVertex	Graph.cpp	/^Vertex Graph::addVertex(string const &id, float vData) $/;"	f	class:Graph
+calculateBetweenness	Graph.cpp	/^map<Vertex, float> Graph::calculateBetweenness() $/;"	f	class:Graph
+calculateClusteringCoefficient	Graph.cpp	/^map<Vertex, float> Graph::calculateClusteringCoefficient()$/;"	f	class:Graph
+calculatePageRank	Graph.cpp	/^void Graph::calculatePageRank(map<Vertex, float> & vertexToFloat, unsigned int nIteration) $/;"	f	class:Graph
+calculateShortestPath	Graph.cpp	/^map<Vertex, float> Graph::calculateShortestPath(Vertex v) $/;"	f	class:Graph
+calculateShortestPath	Graph.cpp	/^void Graph::calculateShortestPath(Vertex v, map<Vertex, float> & vertexToFloat, map<Vertex, Vertex> & vertexToVertex) $/;"	f	class:Graph
+getMinAndMaxNodeScores	Graph.cpp	/^pair<float, float> Graph::getMinAndMaxNodeScores()$/;"	f	class:Graph
+loadEdges	Graph.cpp	/^void Graph::loadEdges(string const &fileName, bool flagInverseWeights) throw(GenericError) $/;"	f	class:Graph
+loadNodes	Graph.cpp	/^void Graph::loadNodes(string const &fileName) throw(GenericError) $/;"	f	class:Graph
+main	try_adjacency_matrix.cpp	/^int main()$/;"	f
+outputScores	Graph.cpp	/^void Graph::outputScores(string fileName) const throw(GenericError)$/;"	f	class:Graph
+pairSortBySecondPredicate	Graph.cpp	/^bool pairSortBySecondPredicate(const Pair& lhs, const Pair& rhs)$/;"	f
+print	Graph.cpp	/^void Graph::print() const$/;"	f	class:Graph
+print	Graph.cpp	/^void Graph::print(bool includeScores) const$/;"	f	class:Graph
+printAdjacencyList	Graph.cpp	/^void Graph::printAdjacencyList() const $/;"	f	class:Graph
+printVertices	Graph.cpp	/^void Graph::printVertices() const$/;"	f	class:Graph
+scaleVertexScores	Graph.cpp	/^void Graph::scaleVertexScores(ScaleType typeScale) {$/;"	f	class:Graph
+test_Graph	Graph.cpp	/^void test_Graph() {$/;"	f
+test_boost_create_and_iterate	Graph.cpp	/^void test_boost_create_and_iterate()$/;"	f
+~Graph	Graph.cpp	/^Graph::~Graph() $/;"	f	class:Graph
