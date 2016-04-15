@@ -127,9 +127,7 @@ NetZcore assigns a normalized score using the distribution of the scores of neig
 	    -d data/test_interactions.txt. -x 100
 ```
 
-    * An integer from 1 to n_random_graph will be appended at the end of prefix_of_random_graph (given by -d option) while reading random graphs (thus prefix_of_random_graphs should also include the directory under which graph files reside).
-
-    * A python script named "create_random_networks_for_netzcore.py" is provided for creating random networks that are going to be used by NetZcore. It requires Python (version 2.5.2 or higher) and Python NetworkX (version 1.1 or higher) package to be installed in your system. The following command would create 100 random networks with the same topology of given input network "data/test_interactions.txt" with the prefix of "data/test_interactions.txt." (appends a dot at the end of the provided egde scores file name).
+An integer from 1 to n_random_graph will be appended at the end of prefix_of_random_graph (given by -d option) while reading random graphs (thus prefix_of_random_graphs should also include the directory under which graph files reside). A python script named "create_random_networks_for_netzcore.py" is provided for creating random networks that are going to be used by NetZcore. It requires Python (version 2.5.2 or higher) and Python NetworkX (version 1.1 or higher) package to be installed in your system. The following command would create 100 random networks with the same topology of given input network "data/test_interactions.txt" with the prefix of "data/test_interactions.txt." (appends a dot at the end of the provided egde scores file name).
 
 ```
 \$> python src/create_random_networks_for_netzcore.py data/test_interactions.txt 100
@@ -144,9 +142,7 @@ There is no method specific parameter for NetShort, however note that algorithm 
 \$> ./guild -s d -n data/test_proteins.txt -e data/test_interactions_for_netshort.txt -o output.txt
 ```
 
-    * Edge scores are average relevance scores of the nodes they connect
-
-    * A python script named "convert_network_for_netshort.py" is provided for creating edge scores file that is going to be used by NetShort (where original edge scores are multiplied by average of the scores of the nodes the edges belong to). It requires Python (version 2.5.2 or higher). The following command would convert the original edge scores file "data/test_interactions.txt" to a NetShort specific "data/test_interactions_for_netshort.txt" egde scores file using node scores information in "data/test_proteins.txt".
+Edge scores are average relevance scores of the nodes they connect. A python script named "convert_network_for_netshort.py" is provided for creating edge scores file that is going to be used by NetShort (where original edge scores are multiplied by average of the scores of the nodes the edges belong to). It requires Python (version 2.5.2 or higher). The following command would convert the original edge scores file "data/test_interactions.txt" to a NetShort specific "data/test_interactions_for_netshort.txt" egde scores file using node scores information in "data/test_proteins.txt".
 
 ```
 \$> python src/convert_network_for_netshort.py data/test_proteins.txt data/test_interactions.txt 
@@ -161,7 +157,7 @@ In fFlow (based on the algorithm of Functional Flow in Nabieva et al. 2005), at 
 \$> ./guild -s f -n data/test_proteins.txt -e data/test_interactions.txt -o output.txt -i 5 -t 1.0
 ```
 
-	*  In this example all nodes that have a score equal or greater than 1.0 are considered seeds
+In this example all nodes that have a score equal or greater than 1.0 are considered seeds.
 
 * NetRank (Page rank with priors), reimplemantation of [Chen et al.](http://www.ncbi.nlm.nih.gov/pubmed/19465376)
 
