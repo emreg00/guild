@@ -47,7 +47,7 @@ Next, go to the src folder and issue make command as below. Beware that make com
 \$> make
 ```
 
-An executable named guild should be created under the ``guild'' folder. Try running it as follows
+An executable named guild should be created under the "guild" folder. Try running it as follows
 
 ```
 \$> cd ..
@@ -105,7 +105,7 @@ For algorithms implemented in R (NetWalk and NetProp), a typical GUILD call woul
 \$> R --slave --args <node_file> <edge_file> <output_file> <use_propagation> < random_walk.r
 ```
 
-where all arguments are as explained before except ``use_propagation'', which -if provided- converts NetWalk algorithm to NetProp. 
+where all arguments are as explained before except "use_propagation", which -if provided- converts NetWalk algorithm to NetProp. 
 
 
 ## Method description and example runs 
@@ -129,7 +129,7 @@ NetZcore assigns a normalized score using the distribution of the scores of neig
 
     * An integer from 1 to n_random_graph will be appended at the end of prefix_of_random_graph (given by -d option) while reading random graphs (thus prefix_of_random_graphs should also include the directory under which graph files reside).
 
-    * A python script named ``create_random_networks_for_netzcore.py'' is provided for creating random networks that are going to be used by NetZcore. It requires Python (version 2.5.2 or higher) and Python NetworkX (version 1.1 or higher) package to be installed in your system. The following command would create 100 random networks with the same topology of given input network ``data/test_interactions.txt'' with the prefix of ``data/test_interactions.txt.'' (appends a dot at the end of the provided egde scores file name).
+    * A python script named "create_random_networks_for_netzcore.py" is provided for creating random networks that are going to be used by NetZcore. It requires Python (version 2.5.2 or higher) and Python NetworkX (version 1.1 or higher) package to be installed in your system. The following command would create 100 random networks with the same topology of given input network "data/test_interactions.txt" with the prefix of "data/test_interactions.txt." (appends a dot at the end of the provided egde scores file name).
 
 ```
 \$> python src/create_random_networks_for_netzcore.py data/test_interactions.txt 100
@@ -146,7 +146,7 @@ There is no method specific parameter for NetShort, however note that algorithm 
 
     * Edge scores are average relevance scores of the nodes they connect
 
-    * A python script named ``convert_network_for_netshort.py'' is provided for creating edge scores file that is going to be used by NetShort (where original edge scores are multiplied by average of the scores of the nodes the edges belong to). It requires Python (version 2.5.2 or higher). The following command would convert the original edge scores file ``data/test_interactions.txt'' to a NetShort specific ``data/test_interactions_for_netshort.txt'' egde scores file using node scores information in ``data/test_proteins.txt''.
+    * A python script named "convert_network_for_netshort.py" is provided for creating edge scores file that is going to be used by NetShort (where original edge scores are multiplied by average of the scores of the nodes the edges belong to). It requires Python (version 2.5.2 or higher). The following command would convert the original edge scores file "data/test_interactions.txt" to a NetShort specific "data/test_interactions_for_netshort.txt" egde scores file using node scores information in "data/test_proteins.txt".
 
 ```
 \$> python src/convert_network_for_netshort.py data/test_proteins.txt data/test_interactions.txt 
@@ -222,7 +222,7 @@ edge_file:
 ```
 
 output_file:
-    Output node scores file containing node (e.g. protein or gene) identifier followed by its ``calculated'' phenotypic relevance score (e.g. association with the disease phenotype for that protein/gene) on each line. The values are separated by whitespace(s). The format of a line would be;
+    Output node scores file containing node (e.g. protein or gene) identifier followed by its calculated phenotypic relevance score (e.g. association with the disease phenotype for that protein/gene) on each line. The values are separated by whitespace(s). The format of a line would be;
 
 ```
     <node_id> <node_score>
