@@ -1,5 +1,4 @@
 # GUILD - Genes Underlying Inheritance Linked Disorders 
-===
 
 GUILD (Genes Underlying Inheritance Linked Disorders) is a framework built for the prioritization of disease candidate genes using a priori gene-disease associations and protein interactions. GUILD consists of implementations of 8 algorithms: NetScore, NetZcore, NetShort, NetCombo, fFlow, NetRank, NetWalk and NetProp. NetScore, NetZcore, NetShort, fFlow and NetRank are implemented in C++ while NetWalk and NetProp are implemented in R and NetCombo is a Python script combining the results of NetScore, NetZcore and NetShort. In this manual, we describe how to use these programs included in GUILD framework. 
 
@@ -15,6 +14,15 @@ In brief, GUILD is a software suite providing command line interface for the fol
 * Network Propagation 
 
 Documentation available under doc/ and on sbi.imim.es/GUILD.php
+
+Contents
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Input files](#input-files)
+* [Citation](#citation)
+
+===
 
 ## Requirements
 * GCC (GNU project C/C++ compiler) (version 4.3 or higher)
@@ -76,7 +84,7 @@ Otherwise make sure that you have recent versions of GCC and make installed, che
 
 ## Usage
 
-## General overview
+### General overview
 
 For algorithms implemented in C++, a typical GUILD call consist of several mandatory arguments (such as name of the input/output files and type of the prioritization method) followed by prioritization method specific arguments. Mandatory arguments common to all prioritization methods are explained below, method specific arguments are described in the later sections for each method separately. Possible arguments for a GUILD executable call is as follows:
 
@@ -108,7 +116,7 @@ For algorithms implemented in R (NetWalk and NetProp), a typical GUILD call woul
 where all arguments are as explained before except "use_propagation", which -if provided- converts NetWalk algorithm to NetProp. 
 
 
-## Method description and example runs 
+### Method description and example runs 
 
 * NetScore (suggested n_repetition: 3, n_iteration: 2)
 
@@ -199,9 +207,9 @@ Therefore an example run for NetCombo is as follows:
 ## Input files
 
 In a nutshell, the input files contain:
-node_scores: node id whitespace(s) node score
-edge_scores: node id whitespace(s) interaction score whitespace(s) node id
-edge_scores_as_node_scores: similar to edge_scores file but edge score is assigned averaging scores of the nodes of the edge in node_scores file
+* node_scores: node id whitespace(s) node score
+* edge_scores: node id whitespace(s) interaction score whitespace(s) node id
+* edge_scores_as_node_scores: similar to edge_scores file but edge score is assigned averaging scores of the nodes of the edge in node_scores file
 
 node_file:
     Input node scores file containing node (e.g. protein or gene) identifier followed by its phenotypic relevance score (e.g. association with the disease phenotype for that protein/gene) on each line. The values need to be separated by whitespace(s). That is;
