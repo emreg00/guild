@@ -1,0 +1,627 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Genes underlying inheritance linked disorders (GUILD) framework - Software Handbook</TITLE>
+<META NAME="description" CONTENT="Genes underlying inheritance linked disorders (GUILD) framework - Software Handbook">
+<META NAME="keywords" CONTENT="guild">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="guild.css">
+
+</HEAD>
+
+<BODY >
+
+<P>
+
+<H4 ALIGN="CENTER">Genes underlying inheritance linked disorders (GUILD) framework - Software Handbook</H4>
+<DIV>
+
+<P ALIGN="CENTER"><STRONG>Emre G&#252;ney<A NAME="tex2html1"
+  HREF="#foot22"><SUP>1</SUP></A></STRONG></P>
+</DIV>
+
+<P>
+GUILD (Genes Underlying Inheritance Linked Disorders) is a framework built for 
+the prioritization of disease candidate genes using a priori gene-disease 
+associations and protein interactions. 
+GUILD consists of implementations of 7 algorithms: NetScore, NetZcore, NetShort,
+fFlow, NetRank, NetWalk and NetProp. NetScore, NetZcore, NetShort, fFlow and 
+NetRank are implemented in <I>C++</I> while NetWalk and NetProp are implemented 
+in <I>R</I>. 
+In this manual, we describe how to use these programs included in GUILD framework.
+
+<P>
+<BR>
+
+<H4><A NAME="SECTION00010000000000000000">
+Contents</A>
+</H4>
+<!--Table of Contents-->
+
+<UL>
+<LI><A NAME="tex2html14"
+  HREF="GUILD.php?page=guild.software#SECTION00020000000000000000">1 Requirements</A>
+<LI><A NAME="tex2html15"
+  HREF="GUILD.php?page=guild.software#SECTION00030000000000000000">2 Installation</A>
+<LI><A NAME="tex2html16"
+  HREF="GUILD.php?page=guild.software#SECTION00040000000000000000">3 Usage</A>
+<UL>
+<LI><A NAME="tex2html17"
+  HREF="GUILD.php?page=guild.software#SECTION00041000000000000000">3.1 NetScore</A>
+<LI><A NAME="tex2html18"
+  HREF="GUILD.php?page=guild.software#SECTION00042000000000000000">3.2 NetZcore</A>
+<LI><A NAME="tex2html19"
+  HREF="GUILD.php?page=guild.software#SECTION00043000000000000000">3.3 NetShort</A>
+<LI><A NAME="tex2html20"
+  HREF="GUILD.php?page=guild.software#SECTION00044000000000000000">3.4 fFlow</A>
+<LI><A NAME="tex2html21"
+  HREF="GUILD.php?page=guild.software#SECTION00045000000000000000">3.5 NetRank</A>
+<LI><A NAME="tex2html22"
+  HREF="GUILD.php?page=guild.software#SECTION00046000000000000000">3.6 NetWalk</A>
+<LI><A NAME="tex2html23"
+  HREF="GUILD.php?page=guild.software#SECTION00047000000000000000">3.7 NetProp</A>
+<LI><A NAME="tex2html24"
+  HREF="GUILD.php?page=guild.software#SECTION00048000000000000000">3.8 NetCombo</A>
+</UL></UL>
+<!--End of Table of Contents-->
+<P>
+
+<H4><A NAME="SECTION00020000000000000000">
+1 Requirements</A>
+</H4>
+
+<P>
+
+<UL>
+<LI>GCC (GNU project C/C++ compiler) (version 4.3 or higher)
+</LI>
+<LI>make (GNU project utility to maintain groups of programs)
+</LI>
+<LI>R (version 2.12.1 or higher) <I>(only required for running NetWalk and NetProp)</I>
+</LI>
+</UL>
+
+<P>
+Unix-like operating systems typically ship with these programs. If not these
+programs are freely available online. Note that, Windows users can have the 
+fundamental environment for the installation (<I>GCC</I> and <I>make</I>) 
+through <I>MinGW</I> (http://<a href="http://www.mingw.org"> http://www.mingw.org </a>) or <I>Cygwin</I> 
+(<a href="http://www.cygwin.com"> http://www.cygwin.com </a>).
+<I>R</I> is a free software environment for statistical computing and 
+graphics and available at <a href="http://www.r-project.org"> http://www.r-project.com </a>/.
+
+<P>
+
+<H4><A NAME="SECTION00030000000000000000">
+2 Installation</A>
+</H4>
+
+<P>
+Download and unpack the source package <I>guild.tar.gz</I> located at 
+<a href="http://sbi.imim.es/web/GUILD.php"> http://sbi.imim.es/web/GUILD.php </a> e.g. as follows
+
+<P>
+<PRE>{bash}
+\$&gt; tar xvzf guild.tar.gz
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+<BR>
+<BR>
+Then, go to the extracted directory<PRE>{bash}
+\$&gt; cd guild
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+<BR>
+<BR>
+Next, go to the src folder and issue <I>make</I> command as below. Beware 
+that <I>make</I> command in MinGW can have a different name (e.g. 
+<I>mingw32-make.exe</I>)
+<PRE>{bash}
+\$&gt; cd src 
+\$&gt; make
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+<BR>
+<BR>
+An executable named <I>guild</I> should be created under the ``guild'' folder.
+Try running it as follows
+
+<P>
+<PRE>{bash}
+\$&gt; cd ..
+\$&gt; ./guild
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+<BR>
+<BR>
+If you get the following output when you run it, the installation is successfully 
+completed. 
+
+<P>
+<PRE>{bash}
+./guild [ Copyleft (GPLv3) - 2011 - Emre Guney (Universitat Pompeu Fabra) ]
+
+ Arguments: 
+     -s &lt;prioritization_method&gt;{NetScore:s|NetZcore:z|NetShort:d|fFlow:f|NetRank:r}
+     -n &lt;node_file&gt;
+     -e &lt;edge_file&gt;
+     -o &lt;output_file&gt;
+     -i &lt;number_of_iterations&gt;
+     -r &lt;number_of_repetitions&gt;
+     -t &lt;seed_score_threshold&gt;
+     -x &lt;number_of_sampled_graphs&gt;
+     -d &lt;sampled_graph_prefix&gt;
+     -h
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+<BR>
+<BR>
+Otherwise make sure that you have recent versions of <I>GCC</I> and 
+<I>make</I> installed, check the steps above and retry compiling.
+
+<P>
+
+<H4><A NAME="SECTION00040000000000000000">
+3 Usage</A>
+</H4>
+
+<P>
+For algorithms implemented in C++, a typical GUILD call consist of several 
+mandatory arguments (such as name of the input/output files and type of the 
+prioritization method) followed by prioritization method specific arguments. 
+Mandatory arguments common to all prioritization methods are explained below, 
+method specific arguments are described in the later sections for each method 
+separately. Possible arguments for a GUILD executable call is as follows:
+
+<P>
+<PRE>{bash}
+\$&gt; ./guild -s &lt;prioritization_method&gt; -n &lt;node_file&gt; -e &lt;edge_file&gt; -o &lt;output_file&gt; 
+	    -i &lt;number_of_iterations&gt; -r &lt;number_of_repetitions&gt; -t &lt;seed_score_threshold&gt; 
+	    -x &lt;number_of_sampled_graphs&gt; -d &lt;sampled_graph_prefix&gt;
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+<BR>
+<BR>
+where;
+
+<P>
+<DL>
+<DT><STRONG>prioritization_method:</STRONG></DT>
+<DD>The type of the prioritization algorithm, 
+	available values are 
+	
+<UL>
+<LI>s: NetScore
+</LI>
+<LI>z: NetZcore 
+</LI>
+<LI>d: NetShort 
+</LI>
+<LI>f: fFlow 
+</LI>
+<LI>r: NetRank
+	
+</LI>
+</UL>
+
+<P>
+</DD>
+<DT><STRONG>node_file:</STRONG></DT>
+<DD>Input node scores file containing node (e.g. protein or 
+	gene) identifier followed by its phenotypic relevance score (e.g. 
+	association with the disease phenotype for that protein/gene) on each 
+	line. The values need to be separated by whitespace(s). That is;
+<PRE>{text}
+&lt;node_id&gt; &lt;node_score&gt;
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">text</FONT></FONT></BLINK>
+
+<P>
+</DD>
+<DT><STRONG>edge_file:</STRONG></DT>
+<DD>Input edge scores file containing node (e.g. protein or 
+	gene) identifier followed by score of the edge its phenotypic 
+	relevance score (e.g. association with the disease phenotype for the 
+	proteins/genes it is connecting) and node identifier (the interaction 
+	partner) on each line. The values are separated by whitespace(s). Thus, 
+	a line in this file looks like;
+<PRE>{text}
+&lt;node_id&gt; &lt;edge_score&gt; &lt;node_id&gt;
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">text</FONT></FONT></BLINK>
+
+<P>
+</DD>
+<DT><STRONG>output_file:</STRONG></DT>
+<DD>Output node scores file containing node (e.g. protein 
+	or gene) identifier followed by its ``calculated'' phenotypic 
+	relevance score (e.g. association with the disease phenotype for that 
+	protein/gene) on each line. The values are separated by whitespace(s). 
+	The format of a line would be;
+<PRE>{text}
+&lt;node_id&gt; &lt;node_score&gt;
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">text</FONT></FONT></BLINK>
+
+<P>
+</DD>
+</DL>
+
+<P>
+For algorithms implemented in R (NetWalk and NetProp), a typical GUILD call would look like:
+
+<P>
+<PRE>{bash}
+\$&gt; R --slave --args &lt;node_file&gt; &lt;edge_file&gt; &lt;output_file&gt; &lt;use_propagation&gt; &lt; random_walk.r
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+<BR>
+<BR>
+where all arguments are as explained before except ``use_propagation'', which -if provided- converts NetWalk algorithm to NetProp.
+
+<P>
+
+<H4><A NAME="SECTION00041000000000000000">
+3.1 NetScore</A>
+</H4>
+NetScore adopts a message-passing scheme such that each node sends the 
+information associated with it as a message to all of its neighbours and the 
+neighbours convey these messages to their neighbours. NetScore takes into 
+consideration alternative shortest paths within the distance of at most 
+number_of_iterations links at each so called repetition-cycle. At the end of 
+the repetition cycle, the node scores are updated according to messages 
+recieved so far and the message passing is restarted.
+
+<P>
+<IMG
+ WIDTH="384" HEIGHT="215" ALIGN="BOTTOM" BORDER="0"
+ SRC="galeries/guild/guild-img1.png"
+ ALT="\includegraphics[scale=0.5]{netscore.eps}">
+
+<P>
+<BR>
+<BR>
+Method specific parameters for NetScore are;
+<DL>
+<DT><STRONG>number_of_repetitions:</STRONG></DT>
+<DD>The number of resets (updating the scores 
+	of the nodes to calculated scores so far) in the algorithm. Defines the 
+	reach of the method (number of links to look further while calculating 
+	score) in accordance with the number_of_iteration parameter.
+    
+</DD>
+<DT><STRONG>number_of_iterations:</STRONG></DT>
+<DD>Number of iterations to apply the scoring 
+	step of the prioritization algorithm. That is the length of shortest 
+	paths to consider from a node to other nodes (messages of the nodes 
+	that are this many links further are considered).
+</DD>
+</DL>
+
+<P>
+The following is an example call to run NetScore algorithm using node file 
+<I>node_score.txt</I> and edge <I>file edge_score.txt</I> with number 
+of iteration and repetition parameters of <I>2</I> and <I>3</I> 
+respectively, writing the calculated scores to a file named output.txt.
+
+<P>
+<PRE>{bash}
+\$&gt; ./guild -s s -n data/test_proteins.txt -e data/test_interactions.txt -o output.txt -r 3 -i 2
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+
+<H4><A NAME="SECTION00042000000000000000">
+3.2 NetZcore</A>
+</H4>
+NetZcore assigns a normalized score using the distribution of the scores of 
+neighbouring nodes. The normalization uses a random model of networks and it 
+is calculated with the Z-score formulae: z=(x-m)/s, where m is the average of 
+scores of neighbouring nodes with similar distribution in the random network 
+and s is the standard deviation. The distribution is obtained with hundred 
+network-replicates obtained by randomly shuffling the scores among nodes with 
+similar degree (i.e. 100 random networks preserving the original topology).
+
+<P>
+<IMG
+ WIDTH="466" HEIGHT="514" ALIGN="BOTTOM" BORDER="0"
+ SRC="galeries/guild/guild-img2.png"
+ ALT="\includegraphics[scale=0.5]{netzcore.eps}">
+
+<P>
+<BR>
+<BR>
+Method specific parameters for NetZcore are;
+<DL>
+<DT><STRONG>number_of_iterations:</STRONG></DT>
+<DD>Number of iterations to apply the scoring 
+	step of the prioritization algorithm. 
+    
+</DD>
+<DT><STRONG>number_of_sampled_graphs:</STRONG></DT>
+<DD>Number of the sampled networks (random 
+	networks with similar characteristics -e.g. topology or degree 
+	distribution- of original network) used for calculating expected mean 
+	and standard deviation of scores by random.
+    
+</DD>
+<DT><STRONG>sampled_graph_prefix:</STRONG></DT>
+<DD>The full prefix of the sampled networks. An 
+	integer from 1 to n_sampled_graphs will be appended at the end of 
+	this text while reading sampled networks (thus it should include the 
+	directory under which random network files reside). Note that the 
+	program itself does not create random networks and looks for already 
+	existing random networks residing under the path given by this parameter.
+	A python script is provided for creating such networks (see below).
+</DD>
+</DL>
+
+<P>
+An example call to run NetZcore algorithm where <I>data</I> 
+folder contains 100 randomly generated networks starting with the prefix 
+<I>test_interactions.txt.</I> (e.g. <I>test_interactions.txt.1</I>, 
+<I>test_interactions.txt.2</I>, ..., <I>test_interactions.txt.100</I> 
+is as follows:
+
+<P>
+<PRE>{bash}
+\$&gt; ./guild -s z -n data/test_proteins.txt -e data/test_interactions.txt -o output.txt -i 5 
+	    -d data/test_interactions.txt. -x 100
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+<BR>
+<BR>
+A python script named ``create_random_networks_for_netzcore.py'' is provided 
+for creating random networks that are going to be used by NetZcore. It requires 
+<I>Python</I> (version 2.5.2 or higher) and Python <I>NetworkX</I> (version 
+1.1 or higher) package to be installed in your system. The following command 
+would create 100 random networks with the same topology of given input network
+``data/test_interactions.txt'' with the prefix of 
+``data/test_interactions.txt.'' (appends a dot at the end of the provided egde 
+scores file name).
+
+<P>
+<PRE>{bash}
+\$&gt; python src/create_random_networks_for_netzcore.py data/test_interactions.txt 100
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+
+<H4><A NAME="SECTION00043000000000000000">
+3.3 NetShort</A>
+</H4>
+NetShort accumulates the weighted shortest path lengths between a node and the 
+rest of nodes in the network, where each edge-weight is inversely proportional 
+to the average of the scores of the two nodes connected by the edge (i.e.edges 
+connecting high scoring nodes are shorter). 
+
+<P>
+<IMG
+ WIDTH="384" HEIGHT="203" ALIGN="BOTTOM" BORDER="0"
+ SRC="galeries/guild/guild-img3.png"
+ ALT="\includegraphics[scale=0.5]{netshort.eps}">
+
+<P>
+<BR>
+<BR>
+There is no method specific parameter for NetShort, however note that 
+algorithm uses the phenotypic association scores in the edge scores file 
+(<I>edge_file</I>) rather than the node scores file (e.g. the average of 
+the scores of the nodes the edge in concern connects). A python script to 
+create netshort specific edge scores file is provided for convenience (see
+below).
+
+<P>
+<BR>
+<BR>
+Thus an example NetShort run would be;
+
+<P>
+<PRE>{bash}
+\$&gt; ./guild -s d -n data/test_proteins.txt -e data/test_interactions_for_netshort.txt -o output.txt
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+<BR>
+<BR>
+A python script named ``convert_network_for_netshort.py'' is provided 
+for creating edge scores file that is going to be used by NetShort 
+(where original edge scores are multiplied by average of the scores of the 
+nodes the edges belong to). It requires <I>Python</I> (version 2.5.2 or 
+higher). The following command would convert the original edge scores file 
+``data/test_interactions.txt'' to a NetShort specific 
+``data/test_interactions_for_netshort.txt'' egde scores file using node
+scores information in ``data/test_proteins.txt''.
+
+<P>
+<PRE>{bash}
+\$&gt; python src/convert_network_for_netshort.py data/test_proteins.txt data/test_interactions.txt 
+	data/test_interactions_for_netshort.txt
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+
+<H4><A NAME="SECTION00044000000000000000">
+3.4 fFlow</A>
+</H4>
+In fFlow (based on the algorithm of Functional Flow in Nabieva et al. 2005), 
+at each iteration, annotation scores flow from nodes with higher score towards 
+nodes with lower scores at the amount of the capacity of the edge through which 
+the nodes are connected.
+
+<P>
+<BR>
+<BR>
+The method specific parameters for fFlow are;
+<DL>
+<DT><STRONG>number_of_iterations:</STRONG></DT>
+<DD>Number of iterations to apply the scoring 
+	step of the prioritization algorithm. 
+    
+</DD>
+<DT><STRONG>seed_score_threshold:</STRONG></DT>
+<DD>All the nodes that have higher than this 
+	given threshold score will be considered as seeds for the method and 
+	assigned infinite scores during scoring.
+</DD>
+</DL>
+
+<P>
+An example call of fFlow where all nodes that have a score higher than <IMG
+ WIDTH="27" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="galeries/guild/guild-img4.png"
+ ALT="$1.0$"> are seeds is;
+
+<P>
+<PRE>{bash}
+\$&gt; ./guild -s f -n data/test_proteins.txt -e data/test_interactions.txt -o output.txt -i 5 -t 1.0
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+
+<H4><A NAME="SECTION00045000000000000000">
+3.5 NetRank</A>
+</H4>
+NetRank (based on the ToppGene algorithm proposed by Chen et al. 2009) uses 
+Page Rank with priors algorithm (where a random surfer is more likely to end 
+up in initially relevant nodes) to score a node in terms of phenotypic 
+relevance. The damping factor is 0.15 and the number iterations for convergence 
+is defined by the number_of_iterations parameter (see below).
+
+<P>
+<BR>
+<BR>
+The method specific parameter for NetRank is;
+<DL>
+<DT><STRONG>number_of_iterations:</STRONG></DT>
+<DD>Number of iterations to apply the scoring step of the prioritization algorithm. In the case of Page Rank algorithm it defines the number of the times for calculating page ranks for the nodes (convergence criterion for the algorithm). This number is set to 20 by default.
+</DD>
+</DL>
+
+<P>
+Therefore an example run for NetRank is as follows:
+
+<P>
+<PRE>{bash}
+\$&gt; ./guild -s r -n data/test_proteins.txt -e data/test_interactions.txt -o output.txt
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+
+<H4><A NAME="SECTION00046000000000000000">
+3.6 NetWalk</A>
+</H4>
+NetWalk (based on the Random walk with restarts algorithm proposed by Kohler, 
+et al., 2008) iteratively simulates random transitions of a walker from a node 
+to a randomly selected neighbour node and where at any time step the walk can 
+be restarted depending on a predefined probability. Random walk with restarts 
+is slightly different than PageRank with priors in the way that it normalizes 
+the link weights. The convergence is decided by either having a probability 
+difference less than 10e-6 between two consecutive time steps or achieving the 
+limit of the number of iterations, set to 50 (though in practice less than 20 
+iterations are typically sufficient to satisfy the first criterion). There is 
+no method specific parameter for NetWalk.
+
+<P>
+<BR>
+<BR>
+Therefore an example run for NetWalk is as follows:
+
+<P>
+<PRE>{bash}
+\$&gt; R --slave --args data/test_proteins.txt data/test_interactions.txt output.txt &lt; random_walk.r
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+
+<H4><A NAME="SECTION00047000000000000000">
+3.7 NetProp</A>
+</H4>
+NetProp (based on the Network propagation algorithm proposed by Vanunu, et al., 
+2010) modifies random walk with restarts such that the link weight is 
+normalized not only by number of outgoing edges but also by number of incoming 
+edges. The convergence is decided as it is done for NetWalk. There is no 
+method specific parameter for NetProp.
+
+<P>
+<BR>
+<BR>
+Therefore an example run for NetProp is as follows:
+
+<P>
+<PRE>{bash}
+\$&gt; R --slave --args data/test_proteins.txt data/test_interactions.txt output.txt 1 &lt; random_walk.r
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+
+<H4><A NAME="SECTION00048000000000000000">
+3.8 NetCombo</A>
+</H4>
+NetCombo combines the output scores from NetScore, NetZcore and NetShort in 
+a consensus scheme by averaging normalized scores (z-scores) of a node in
+all of these methods. It requires the output files of NetScore, NetZcore and 
+NetShort. 
+
+<P>
+<BR>
+<BR>
+Therefore an example run for NetCombo is as follows:
+
+<P>
+<PRE>{bash}
+\$&gt; python src/combine_scores.py output_netscore.txt output_netzcore.txt output_netshort.txt output.txt
+</PRE>
+<BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+
+<P>
+<BR><HR><H4>Footnotes</H4>
+<DL>
+<DT><A NAME="foot22">...&#252;ney</A><A
+ HREF="GUILD.php?page=guild.software#tex2html1"><SUP>1</SUP></A></DT>
+<DD>Structural Bioinformatics Laboratory, Pompeu Fabra University, December 9, 2011
+
+</DD>
+</DL>
+<BR><HR>
+<ADDRESS>
+
+2011-12-09
+</ADDRESS>
+</BODY>
+</HTML>

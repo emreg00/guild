@@ -13,7 +13,7 @@ In brief, GUILD is a software suite providing command line interface for the fol
 * Random walk with restart
 * Network Propagation 
 
-Documentation available under [doc](doc) and on the [web](sbi.imim.es/GUILD.php).
+Documentation available at [doc](doc) and on the [web](http://sbi.imim.es/GUILD.php).
 
 Contents:
 * [Requirements](#requirements)

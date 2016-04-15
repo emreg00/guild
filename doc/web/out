@@ -1,0 +1,139 @@
+0a1,2
+> <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+> 
+5a8,17
+> <HTML>
+> <HEAD>
+> <TITLE>Genes underlying inheritance linked disorders (GUILD) framework - Software Handbook</TITLE>
+> <META NAME="description" CONTENT="Genes underlying inheritance linked disorders (GUILD) framework - Software Handbook">
+> <META NAME="keywords" CONTENT="guild">
+> <META NAME="resource-type" CONTENT="document">
+> <META NAME="distribution" CONTENT="global">
+> 
+> <META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+> <META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+9,11c21,32
+< <!-- SOFTWARE -->
+< <a name="software"></a>
+< <h2>Software</h2>
+---
+> </HEAD>
+> 
+> <BODY >
+> 
+> <P>
+> 
+> <H4 ALIGN="CENTER">Genes underlying inheritance linked disorders (GUILD) framework - Software Handbook</H4>
+> <DIV>
+> 
+> <P ALIGN="CENTER"><STRONG>Emre G&#252;ney<A NAME="tex2html1"
+>   HREF="#foot22"><SUP>1</SUP></A></STRONG></P>
+> </DIV>
+24,29c45
+< <H3> Download</H3>
+< The software used in GUILD framework is distributed freely under GNU Public License. Download <a href="../../data/guild/guild.tar.gz"> the source code, example input files and the software manual here</a>.
+< See handbook either in the downloaded archive (under "doc" directory) or below for the instructions on installation and usage. A <a href="../../data/guild/guild_handbook.pdf"> PDF version of the handbook</a> is also provided for convenience.
+< 
+< <H3> Handbook</H3>
+< 
+---
+> <BR>
+37,38d52
+< <LI><A NAME="tex2html13"
+<   href="<?php echo $current_page_url;?>?page=guild.software#SECTION00020000000000000000">1 Requirements</A>
+40c54
+<   href="<?php echo $current_page_url;?>?page=guild.software#SECTION00030000000000000000">2 Installation</A>
+---
+>   HREF="GUILD.php?page=guild.software#SECTION00020000000000000000">1 Requirements</A>
+42,43c56
+<   href="<?php echo $current_page_url;?>?page=guild.software#SECTION00040000000000000000">3 Usage</A>
+< <UL>
+---
+>   HREF="GUILD.php?page=guild.software#SECTION00030000000000000000">2 Installation</A>
+45c58,59
+<   href="<?php echo $current_page_url;?>?page=guild.software#SECTION00041000000000000000">3.1 NetScore</A>
+---
+>   HREF="GUILD.php?page=guild.software#SECTION00040000000000000000">3 Usage</A>
+> <UL>
+47c61
+<   href="<?php echo $current_page_url;?>?page=guild.software#SECTION00042000000000000000">3.2 NetZcore</A>
+---
+>   HREF="GUILD.php?page=guild.software#SECTION00041000000000000000">3.1 NetScore</A>
+49c63
+<   href="<?php echo $current_page_url;?>?page=guild.software#SECTION00043000000000000000">3.3 NetShort</A>
+---
+>   HREF="GUILD.php?page=guild.software#SECTION00042000000000000000">3.2 NetZcore</A>
+51c65
+<   href="<?php echo $current_page_url;?>?page=guild.software#SECTION00044000000000000000">3.4 fFlow</A>
+---
+>   HREF="GUILD.php?page=guild.software#SECTION00043000000000000000">3.3 NetShort</A>
+53c67
+<   href="<?php echo $current_page_url;?>?page=guild.software#SECTION00045000000000000000">3.5 NetRank</A>
+---
+>   HREF="GUILD.php?page=guild.software#SECTION00044000000000000000">3.4 fFlow</A>
+55c69
+<   href="<?php echo $current_page_url;?>?page=guild.software#SECTION00046000000000000000">3.6 NetWalk</A>
+---
+>   HREF="GUILD.php?page=guild.software#SECTION00045000000000000000">3.5 NetRank</A>
+57c71,75
+<   href="<?php echo $current_page_url;?>?page=guild.software#SECTION00047000000000000000">3.7 NetProp</A>
+---
+>   HREF="GUILD.php?page=guild.software#SECTION00046000000000000000">3.6 NetWalk</A>
+> <LI><A NAME="tex2html23"
+>   HREF="GUILD.php?page=guild.software#SECTION00047000000000000000">3.7 NetProp</A>
+> <LI><A NAME="tex2html24"
+>   HREF="GUILD.php?page=guild.software#SECTION00048000000000000000">3.8 NetCombo</A>
+285c303
+<  SRC="http://sbi.imim.es/guild/guild-img1.png"
+---
+>  SRC="galeries/guild/guild-img1.png"
+336c354
+<  SRC="http://sbi.imim.es/guild/guild-img2.png"
+---
+>  SRC="galeries/guild/guild-img2.png"
+412c430
+<  SRC="http://sbi.imim.es/guild/guild-img3.png"
+---
+>  SRC="galeries/guild/guild-img3.png"
+485c503
+<  SRC="http://sbi.imim.es/guild/guild-img4.png"
+---
+>  SRC="galeries/guild/guild-img4.png"
+572a591,627
+> <P>
+> 
+> <H4><A NAME="SECTION00048000000000000000">
+> 3.8 NetCombo</A>
+> </H4>
+> NetCombo combines the output scores from NetScore, NetZcore and NetShort in 
+> a consensus scheme by averaging normalized scores (z-scores) of a node in
+> all of these methods. It requires the output files of NetScore, NetZcore and 
+> NetShort. 
+> 
+> <P>
+> <BR>
+> <BR>
+> Therefore an example run for NetCombo is as follows:
+> 
+> <P>
+> <PRE>{bash}
+> \$&gt; python src/combine_scores.py output_netscore.txt output_netzcore.txt output_netshort.txt output.txt
+> </PRE>
+> <BLINK><FONT COLOR="#bfbfbf"><FONT SIZE="-2">bash</FONT></FONT></BLINK>
+> 
+> <P>
+> <BR><HR><H4>Footnotes</H4>
+> <DL>
+> <DT><A NAME="foot22">...&#252;ney</A><A
+>  HREF="GUILD.php?page=guild.software#tex2html1"><SUP>1</SUP></A></DT>
+> <DD>Structural Bioinformatics Laboratory, Pompeu Fabra University, December 9, 2011
+> 
+> </DD>
+> </DL>
+> <BR><HR>
+> <ADDRESS>
+> 
+> 2011-12-09
+> </ADDRESS>
+> </BODY>
+> </HTML>

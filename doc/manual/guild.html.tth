@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<meta name="GENERATOR" content="TtH 3.85">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+ <style type="text/css"> div.p { margin-top: 7pt;}</style>
+ <style type="text/css"><!--
+ td div.comp { margin-top: -0.6ex; margin-bottom: -1ex;}
+ td div.comb { margin-top: -0.6ex; margin-bottom: -.6ex;}
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+ td div.norm {line-height:normal;}
+ span.roman {font-family: serif; font-style: normal; font-weight: normal;} 
+ span.overacc2 {position: relative;  left: .8em; top: -1.2ex;}
+ span.overacc1 {position: relative;  left: .6em; top: -1.2ex;} --></style>
+
+
+<title>3cm</title>
+
+3cm2cm2cm2cm
+
+
+
+<div class="p"><!----></div>
+ 
+<title>Genes underlying inheritance linked disorders (GUILD) framework - Software Handbook</title>
+    
+<h1 align="center">Genes underlying inheritance linked disorders (GUILD) framework - Software Handbook </h1>
+
+<h3 align="center">Emre G&#252;ney<a href="#tthFtNtAAB" name="tthFrefAAB"><sup>1</sup></a> </h3>
+
+
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+GUILD (Genes Underlying Inheritance Linked Disorders) is a framework built for the prioritization of disease candidate genes using a priori gene-disease associations and protein interactions. 
+In this manual, we describe how to use the programs included in GUILD framework.
+
+<div class="p"><!----></div>
+
+<h1>Contents </h1><a href="#tth_sEc1"
+>1&nbsp; Requirements</a><br />
+<a href="#tth_sEc2"
+>2&nbsp; Installation</a><br />
+<a href="#tth_sEc3"
+>3&nbsp; Usage</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc3.1"
+>3.1&nbsp; NetScore</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc3.2"
+>3.2&nbsp; NetZcore</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc3.3"
+>3.3&nbsp; NetShort</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc3.4"
+>3.4&nbsp; fFlow</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tth_sEc3.5"
+>3.5&nbsp; NetRank</a><br />
+
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+equirements
+
+<div class="p"><!----></div>
+
+<ul>
+<li> GCC (GNU project C/C++ compiler)
+<div class="p"><!----></div>
+</li>
+
+<li> make (GNU project utility to maintain groups of programs)
+<div class="p"><!----></div>
+</li>
+
+<li> Boost Graph Library (BGL) (version 1.45 or higher)
+<div class="p"><!----></div>
+</li>
+</ul>
+
+<div class="p"><!----></div>
+Note that, Windows users can have the fundamental environment for the installation (<i>GCC</i> and <i>make</i>) through <i>MinGW</i> (www.mingw.org) or <i>Cygwin</i> (http://www.cygwin.com).
+
+<div class="p"><!----></div>
+Boost Graph Library (BGL) is a header based C++ library (part of Boost C++ libraries, http://www.boost.org) and no separate installation is required once you download the library files. However, 
+you will need the directory where Boost libraries are located for the installation step.
+
+<div class="p"><!----></div>
+nstallation
+
+<div class="p"><!----></div>
+Download and unpack the source package <i>guild.tar.gz</i> located at http://sbi.imim.es/web/GUILD.php e.g. as follows
+
+<div class="p"><!----></div>
+command
+$&#62; tar xvzf guild.tar.gz
+
+
+
+<div class="p"><!----></div>
+Then, go to the extracted directory, issue the following commands to make the compiler aware of the directory where Boost libraries are located. 
+command
+$&#62; cd guild
+$&#62; export BGL_PATH=path_to_boost_library
+
+
+
+<div class="p"><!----></div>
+Next, issue <i>make</i> command as below. Beware that <i>make</i> command in MinGW can have a different name (e.g. <i>mingw32-make.exe</i>)
+command
+$&#62; make
+
+
+
+<div class="p"><!----></div>
+An executable named <i>guild</i> should be created in the same folder, if you get the following output when you run it, the installation is successfully completed. 
+Otherwise make sure that you have recent versions of GCC and BGL installed, check the steps above and retry compiling.
+command
+$&#62; ./guild
+
+
+
+<div class="p"><!----></div>
+sage
+
+<div class="p"><!----></div>
+A typical GUILD call consist of several mandatory arguments (such as name of the input/output files and type of the prioritization method) followed by prioritization method specific arguments. Mandatory arguments common to all prioritization methods are explained below, method specific arguments are described in the later sections for each method separately. Possible arguments for a GUILD executable call is as follows:
+command
+$&#62; ./guild -s &lt;prioritization_method&#62; -n &lt;node_file&#62; -e &lt;edge_file&#62; -o &lt;output_file&#62; 
+	    -i &lt;number_of_iterations&#62; -r &lt;number_of_repetitions&#62; -t &lt;seed_score_threshold&#62; 
+	    -x &lt;number_of_sampled_graphs&#62; -d &lt;sampled_graph_prefix&#62;
+
+
+
+<div class="p"><!----></div>
+where;
+
+<div class="p"><!----></div>
+
+<dl compact="compact">
+ <dt><b>prioritization_method:</b></dt>
+	<dd> The type of the prioritization algorithm, available values are 
+	
+<ul>
+<li> s: NetScore
+<div class="p"><!----></div>
+</li>
+
+<li> z: NetZcore
+<div class="p"><!----></div>
+</li>
+
+<li> d: NetShort
+<div class="p"><!----></div>
+</li>
+
+<li> f: fFlow
+<div class="p"><!----></div>
+</li>
+
+<li> r: NetRank
+<div class="p"><!----></div>
+</li>
+</ul></dd>
+ <dt><b>node_file:</b></dt>
+	<dd> Input node scores file containing node (e.g. protein or gene) identifier followed by its phenotypic relevance score (e.g. association with the disease phenotype for that protein/gene) on each line. The values need to be separated by whitespace(s). That is;
+text
+&lt;node_id&#62; &lt;node_score&#62;
+
+</dd>
+ <dt><b>edge_file:</b></dt>
+	<dd> Input edge scores file containing node (e.g. protein or gene) identifier followed by score of the edge its phenotypic relevance score (e.g. association with the disease phenotype for the proteins/genes it is connecting) and node identifier (the interaction partner) on each line. The values are separated by whitespace(s). Thus, a line in this file looks like;
+text
+&lt;node_id&#62; &lt;edge_score&#62; &lt;node_id&#62;
+
+</dd>
+ <dt><b>output_file:</b></dt>
+	<dd> Output node scores file containing node (e.g. protein or gene) identifier followed by its "calculated" phenotypic relevance score (e.g. association with the disease phenotype for that protein/gene) on each line. The values are separated by whitespace(s). The format of a line would be;
+text
+&lt;node_id&#62; &lt;node_score&#62;
+
+
+</dd>
+</dl>
+
+<div class="p"><!----></div>
+     <h3><a name="tth_sEc0.1">
+0.1</a>&nbsp;&nbsp;NetScore</h3>
+NetScore adopts a message-passing scheme such that each node sends the information associated with it as a message to all of its neighbours and the neighbours convey these messages to their neighbours. The message contains the score value, weighted by the score of the edge (default is 1). The score of a node is calculated as the sum of all messages coming from the rest of nodes and normalized by the total number of messages received. Thus NetScore takes into consideration alternative shortest paths as opposed to NetShort (see below) however it can consider only shortest paths of length at most number_of_iterations.
+
+<div class="p"><!----></div>
+Method specific parameters for NetScore are;
+
+<dl compact="compact">
+ <dt><b>number_of_repetitions:</b></dt>
+	<dd> The number of resets (updating the scores of the nodes to calculated scores so far) in the algorithm (see details in the description of the prioritization method). Defines the reach of the method (number of links to look further while calculating score) in accordance with the number_of_iteration parameter.</dd>
+ <dt><b>number_of_iterations:</b></dt>
+	<dd> Number of iterations to apply the scoring step of the prioritization algorithm. That is the length of shortest paths to consider from a node to other nodes (messages of the nodes that are this many links further are considered).</dd>
+</dl>
+
+<div class="p"><!----></div>
+The following is an example call to run NetScore algorithm using node file <i>node_score.txt</i> and edge <i>file edge_score.txt</i> with number of iteration and repetition parameters of <i>2</i> and <i>3</i> respectively, writing the calculated scores to a file named output.txt.
+command
+$&#62; guild -s s -n node_score.txt -e edge_score.txt -o output.txt -r 3 -i 2
+
+
+
+<div class="p"><!----></div>
+     <h3><a name="tth_sEc0.2">
+0.2</a>&nbsp;&nbsp;NetZcore</h3>
+NetZcore assigns a normalized score using the distribution of the scores of neighbouring nodes. The normalization uses a random model of networks and it is calculated with the Z-score formulae: z=(x-m)/s, where m is the average of scores of neighbouring nodes with similar distribution in the random network and s is the standard deviation. The distribution is obtained with hundred network-replicates obtained by randomly shuffling the scores among nodes with similar degree (i.e. 100 random networks preserving the original topology).
+
+<div class="p"><!----></div>
+Method specific parameters for NetZcore are;
+
+<dl compact="compact">
+ <dt><b>number_of_iterations:</b></dt>
+	<dd> Number of iterations to apply the scoring step of the prioritization algorithm.</dd>
+ <dt><b>number_of_sampled_graphs:</b></dt>
+	<dd> Number of the sampled networks (random networks with similar characteristics -e.g. topology or degree distribution- of original network) used for calculating expected mean and standard deviation of scores by random.</dd>
+ <dt><b>sampled_graph_prefix:</b></dt>
+	<dd> The full prefix of the sampled networks. An integer from 1 to n_sampled_graphs will be appended at the end of this text while reading sampled networks (thus it should include the directory under which random network files reside). Note that the program itself does not create random networks and looks for already existing random networks residing under the path given by this parameter.</dd>
+</dl>
+
+<div class="p"><!----></div>
+An example call to run NetZcore algorithm where <i>sampled_networks</i> folder contains 100 randomly generated networks starting with the prefix <i>random_edge_score.txt.</i> (e.g. <i>random_edge_score.txt.1</i>, <i>random_edge_score.txt.2</i>, ..., <i>random_edge_score.txt.100</i> is as follows:
+command
+$&#62; guild -s z -n node_score.txt -e edge_score.txt -o output.txt -i 5 
+	    -d sampled_networks/random_edge_score.txt. -x 100
+
+
+
+<div class="p"><!----></div>
+     <h3><a name="tth_sEc0.3">
+0.3</a>&nbsp;&nbsp;NetShort</h3>
+NetShort accumulates the weighted shortest path lengths between a node and the rest of nodes in the network, where each edge-weight is inversely proportional to the average of the scores of the two nodes connected by the edge (i.e.edges connecting high scoring nodes are shorter). 
+
+<div class="p"><!----></div>
+There is no method specific parameter for NetShort, however note that algorithm uses the phenotypic association scores in the edge scores file (<i>edge_file</i>) rather than the node scores file (e.g. the average of the scores of the nodes the edge in concern connects).
+
+<div class="p"><!----></div>
+Thus an example NetShort run would be;
+command
+$&#62; guild -s d -n node_score.txt -e edge_score.txt -o output.txt
+
+
+
+<div class="p"><!----></div>
+     <h3><a name="tth_sEc0.4">
+0.4</a>&nbsp;&nbsp;fFlow</h3>
+In fFlow (based on the algorithm of Functional Flow in Nabieva et al. 2005), at each iteration, annotation scores flow from nodes with higher score towards nodes with lower scores at the amount of the capacity of the edge through which the nodes are connected.
+
+<div class="p"><!----></div>
+The method specific parameters for fFlow are;
+
+<dl compact="compact">
+ <dt><b>number_of_iterations:</b></dt>
+	<dd> Number of iterations to apply the scoring step of the prioritization algorithm.</dd>
+ <dt><b>seed_score_threshold:</b></dt>
+	<dd> All the nodes that have higher than this given threshold score will be considered as seeds for the method and assigned infinite scores during scoring.</dd>
+</dl>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+An example call of fFlow where all nodes that have a score higher than 1.0 are seeds is;
+command
+$&#62; guild -s f -n node_score.txt -e edge_score.txt -o output.txt -i 5 -t 1.0
+
+
+
+<div class="p"><!----></div>
+     <h3><a name="tth_sEc0.5">
+0.5</a>&nbsp;&nbsp;NetRank</h3>
+NetRank (based on the ToppGene algorithm proposed by Chen et al. 2009) uses Page Rank with priors algorithm (where a random surfer is more likely to end up in initially relevant nodes) to score a node in terms of phenotypic relevance. The damping factor is 0.15 and the number iterations for convergence is defined by the number_of_iterations parameter (see below).
+
+<div class="p"><!----></div>
+The method specific parameter for NetRank is;
+
+<dl compact="compact">
+ <dt><b>number_of_iterations:</b></dt>
+	<dd> Number of iterations to apply the scoring step of the prioritization algorithm. In the case of Page Rank algorithm it defines the number of the times for calculating page ranks for the nodes (convergence criterion for the algorithm). This number is set to 20 by default.</dd>
+</dl>
+
+<div class="p"><!----></div>
+Therefore an example run for NetRank is as follows:
+command
+$&#62; guild -s r -n node_score.txt -e edge_score.txt -o output.txt
+
+
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<hr /><h3>Footnotes:</h3>
+
+<div class="p"><!----></div>
+<a name="tthFtNtAAB"></a><a href="#tthFrefAAB"><sup>1</sup></a>Structural Bioinformatics Laboratory, Pompeu Fabra University, Feb 23, 2011
+
+<br /><br /><hr /><small>File translated from
+T<sub><font size="-1">E</font></sub>X
+by <a href="http://hutchinson.belmont.ma.us/tth/">
+T<sub><font size="-1">T</font></sub>H</a>,
+version 3.85.<br />On 23 Feb 2011, 09:42.</small>
+</html>
