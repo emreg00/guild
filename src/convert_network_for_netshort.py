@@ -32,7 +32,7 @@ def create_edge_scores_as_node_scores_file(node_scores_file, edge_scores_file, o
     """
 	Creates edge score file from node association scores, intended comparing netshort with other algorithms without using other edge reliability/relevance score
     """
-    from create_random_networks import get_nodes_and_edges_from_sif_file
+    from create_random_networks_for_netzcore import get_nodes_and_edges_from_sif_file
     nodes, edges, dictDummy, edge_to_score = get_nodes_and_edges_from_sif_file(edge_scores_file, store_edge_type = True, delim = None)
     nodes, setDummy, node_to_score, dictDummy = get_nodes_and_edges_from_sif_file(node_scores_file, store_edge_type = False, delim = None)
     f = open(output_file, 'w')
