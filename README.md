@@ -42,6 +42,8 @@ Using github
 ```
 \$> git clone https://github.com/emreg00/guild.git guild
 ```
+If you use the source code from github, you have to download the [Boost C++ lib](http://www.boost.org/users/download/) and
+extract it in "guild" folder where the repository is cloned.
 
 Using SBI mirror 
 ```
@@ -49,7 +51,7 @@ Using SBI mirror
 \$> tar xvzf guild.tar.gz
 ```
 
-Then, go to the extracted directory
+Then, go to the cloned/extracted directory
 
 ```
 \$> cd guild
