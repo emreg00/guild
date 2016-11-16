@@ -36,7 +36,7 @@ For Python scripts used to create input files see guild_utilities in [toolbox](h
 
 ## Installation
 
-Clone this repository or download and unpack the source package [guild.tar.gz located at](http://sbi.imim.es/web/GUILD.php) e.g. as follows
+Clone this repository or download and unpack the source package [guild.tar.gz](http://sbi.imim.es/web/GUILD.php) e.g. as follows
 
 Using github
 ```
