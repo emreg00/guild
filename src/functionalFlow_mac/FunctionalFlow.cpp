@@ -69,7 +69,7 @@ void FunctionalFlow::loadInteractions(string const &fileName) {
     string name1, name2;
     float capacity = 0.0;
     if(!file) cerr << "Warning: file can not be opened" << endl;
-    std::tr1::unordered_map<int, void*>::iterator it1, it2;
+    std::unordered_map<int, void*>::iterator it1, it2;
     //hash_map<int, void*>::iterator it1, it2;
     while(file >> name1 >> capacity >> name2) {
 	if(flagRemoveSeedEffect) {
@@ -227,7 +227,7 @@ void FunctionalFlow::outputScores() {
     MapIntToVertex::iterator itNode, itEndNode;
     MapIntToVertex *pMapNode = pMapIdToNode;
     Vertex *pVertex;
-    std::tr1::unordered_map<int, void*> mapIdProcessed;
+    std::unordered_map<int, void*> mapIdProcessed;
     //hash_map<int,void*> mapIdProcessed;
     ofstream fOut;
     fOut.open(fileOutput.c_str());
@@ -245,7 +245,7 @@ void FunctionalFlow::printNodesAndScores() {
     MapIntToVertex::iterator itNode, itEndNode;
     MapIntToVertex *pMapNode = pMapIdToNode;
     Vertex *pVertex;
-    std::tr1::unordered_map<int, void*> mapIdProcessed;
+    std::unordered_map<int, void*> mapIdProcessed;
     //hash_map<int,void*> mapIdProcessed;
 
     for(itNode = pMapNode->begin(), itEndNode = pMapNode->end(); itNode != itEndNode; ++itNode) {
@@ -264,7 +264,7 @@ void FunctionalFlow::printNetwork(string explanation) {
     Vertex *pVertex;
     MapIntToEdge *pMapEdge;
     Edge *pEdge;
-    std::tr1::unordered_map<int, void*> mapIdProcessed;
+    std::unordered_map<int, void*> mapIdProcessed;
     //hash_map<int,void*> mapIdProcessed;
     
     if(explanation != "") cout << "----" << explanation << ": " << endl;
@@ -307,7 +307,7 @@ void FunctionalFlow::printEdges() {
     Vertex *pVertex;
 	MapIntToEdge *pMapEdge;
     Edge *pEdge;
-    std::tr1::unordered_map<int, void*> mapIdProcessed;
+    std::unordered_map<int, void*> mapIdProcessed;
     //hash_map<int,void*> mapIdProcessed;
     
     for(itNode = pMapNode->begin(), itEndNode = pMapNode->end(); itNode != itEndNode; ++itNode) {
