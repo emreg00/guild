@@ -27,7 +27,7 @@ Contents:
 ## Requirements
 * GCC (GNU project C/C++ compiler) (version 4.3 or higher)
 * make (GNU project utility to maintain groups of programs)
-* BOOST lib (tested with boost_1_41_0)
+* BOOST lib (tested with boost_1_41_0 and boost_1_62_0)
 * R (version 2.12.1 or higher) (only required for running NetWalk and NetProp)
 
 Unix-like operating systems typically ship with these programs. If not these programs are freely available online. Note that, Windows users can have the fundamental environment for the installation (GCC and make) through MinGW (http:// http://www.mingw.org ) or Cygwin ( http://www.cygwin.com ). R is a free software environment for statistical computing and graphics and available at http://www.r-project.com /. 
@@ -36,9 +36,16 @@ For Python scripts used to create input files see guild_utilities in [toolbox](h
 
 ## Installation
 
-Clone this repository or download and unpack the source package guild.tar.gz located at http://sbi.imim.es/web/GUILD.php e.g. as follows
+Clone this repository or download and unpack the source package [guild.tar.gz located at](http://sbi.imim.es/web/GUILD.php) e.g. as follows
 
+Using github
 ```
+\$> git clone https://github.com/emreg00/guild.git guild
+```
+
+Using SBI mirror 
+```
+\$> wget http://sbi.imim.es/data/guild/guild.tar.gz
 \$> tar xvzf guild.tar.gz
 ```
 
@@ -48,7 +55,8 @@ Then, go to the extracted directory
 \$> cd guild
 ```
 
-Next, go to the src folder and issue make command as below. Beware that make command in MinGW can have a different name (e.g. mingw32-make.exe)
+Next, go to the src folder and issue make command as below. Beware that make command in MinGW can have a different name (e.g. mingw32-make.exe). 
+**MacOS users:** use `make -f Makefile.mac` instead of `make` command below (available in the github version of the code).
 
 ```
 \$> cd src 
