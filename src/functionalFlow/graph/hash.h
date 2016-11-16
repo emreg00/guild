@@ -23,7 +23,7 @@
 #define HASH_H_
 
 #include "globals.h"
-#include <tr1/unordered_map> //#include "hash_map.h"
+#include <unordered_map> //#include "hash_map.h"
 #include <cstring>
 
 namespace fflow {

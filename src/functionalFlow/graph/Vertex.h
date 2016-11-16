@@ -28,7 +28,7 @@
 
 namespace fflow {
 
-typedef std::tr1::unordered_map<int, Edge*> MapIntToEdge;
+typedef std::unordered_map<int, Edge*> MapIntToEdge;
 //typedef hash_map<int, Edge*> MapIntToEdge;
 //typedef MapIntToEdge::value_type value_type;
 //typedef MapIntToEdge::iterator iterator;

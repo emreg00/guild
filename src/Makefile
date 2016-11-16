@@ -1,5 +1,6 @@
 #BGL_INCLUDE_DIR=$(BGL_PATH) 
-BGL_INCLUDE_DIR=../boost_1_41_0/
+#BGL_INCLUDE_DIR=../boost_1_41_0/
+BGL_INCLUDE_DIR=../boost_1_62_0/
 
 CC=g++
 CFLAGS=-I $(BGL_INCLUDE_DIR) -O3 -Wall #-g

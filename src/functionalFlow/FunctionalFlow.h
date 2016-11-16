@@ -36,7 +36,7 @@ private:
     bool flagDebug;
     bool flagRemoveSeedEffect;
     float seedScoreThreshold;
-    std::tr1::unordered_map<int, void*> mapSource;
+    std::unordered_map<int, void*> mapSource;
     //hash_map<int, void*> mapSource;
     string fileOutput;
 public:

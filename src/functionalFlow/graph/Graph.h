@@ -29,14 +29,14 @@
 
 namespace fflow {
 
-typedef std::tr1::unordered_map<int, Vertex*> MapIntToVertex;
+typedef std::unordered_map<int, Vertex*> MapIntToVertex;
 //typedef hash_map<int, Vertex*> MapIntToVertex; // hash_map<char*, int, hash<char*>, eqstr> Map;
 //typedef hash_map<string, int, hash<string>, isEqualString> MapStringToInt; 
-typedef std::tr1::unordered_map<string, int> MapStringToInt;
+typedef std::unordered_map<string, int> MapStringToInt;
 //typedef hash_map<const char*, int, hash<const char*>, eqstr> MapStringToInt;
 //typedef MapIntToVertex::value_type value_type;
 //typedef MapIntToVertex::iterator iterator;
-typedef std::tr1::unordered_map<int, string> MapIntToString;
+typedef std::unordered_map<int, string> MapIntToString;
 //typedef hash_map<int, string> MapIntToString;
 
 class Graph {
